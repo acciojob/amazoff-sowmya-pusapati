@@ -46,7 +46,7 @@ public class OrderRepository {
             currentorders.add(orderId);
             PartnerToOrderDB.put(partnerId,currentorders);
 
-            DeliveryPartner deliveryPartner=new DeliveryPartner(partnerId);
+            DeliveryPartner deliveryPartner=partnerDB.get(partnerId);
             deliveryPartner.setNumberOfOrders(currentorders.size());
 
             OrderToPartnerDB.put(orderId,partnerId);
@@ -54,19 +54,16 @@ public class OrderRepository {
     }
     public Order getOrderById(String orderid)
     {
-        if(orderDB.containsKey(orderid))
-        {
+
             return orderDB.get(orderid);
-        }
-        return null;
+
+
     }
     public DeliveryPartner getPartnerById(String partnerId)
     {
-        if(partnerDB.containsKey(partnerId))
-        {
+
             return partnerDB.get(partnerId);
-        }
-        return null;
+
     }
     public Integer getOrderCountByPartnerId(String partnerId)
     {

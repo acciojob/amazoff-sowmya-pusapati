@@ -24,13 +24,17 @@ public class OrderRepository {
     public void addOrder(Order order)
     {
        String orderid=order.getId();
-       orderDB.put(orderid,order);
+
+           orderDB.put(orderid, order);
+
 
     }
     public void addPartner(String partnerId)
     {
         DeliveryPartner partner=new DeliveryPartner(partnerId);
-        partnerDB.put(partner.getId(),partner);
+
+            partnerDB.put(partnerId, partner);
+
     }
     public void addOrderPartnerPair(String orderId,String partnerId)
     {

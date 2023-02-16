@@ -122,7 +122,7 @@ public class OrderRepository {
     }
     public String  getLastDeliveryTimeByPartnerId(String patnerId)
     {
-        int time=0;
+        Integer time=0;
         if(PartnerToOrderDB.containsKey(patnerId))
         {
             HashSet<String> orders=PartnerToOrderDB.get(patnerId);
@@ -142,13 +142,13 @@ public class OrderRepository {
         String minutesinString=String.valueOf(minutes);
         if(hourinString.length()==1)
         {
-            hourinString="0"+hourinString;
+            hourinString="0" + hourinString;
         }
         if(minutesinString.length()==1)
         {
-            minutesinString="0"+minutesinString;
+            minutesinString="0" + minutesinString;
         }
-        return hourinString+":"+minutesinString;
+        return hourinString + ":" + minutesinString;
     }
        public void deletePartnerById(String partnerId)
        {
@@ -180,7 +180,7 @@ public class OrderRepository {
                orders.remove(orderId);
                PartnerToOrderDB.put(partnerid,orders);
 
-               DeliveryPartner deliveryPartner=new DeliveryPartner(partnerid);
+               DeliveryPartner deliveryPartner=partnerDB.get(partnerid);
                deliveryPartner.setNumberOfOrders(orders.size());
            }
            if(orderDB.containsKey(orderId))
